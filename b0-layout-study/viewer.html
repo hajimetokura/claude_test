@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>B0 Layout Viewer</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    background: #1a1a1a;
+    color: #eee;
+    -webkit-text-size-adjust: 100%;
+  }
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: #111; border-bottom: 1px solid #333;
+    padding: 12px 16px;
+  }
+  header h1 { font-size: 16px; font-weight: 600; }
+  header p { font-size: 11px; color: #888; margin-top: 2px; }
+
+  .tab-bar {
+    display: flex; overflow-x: auto; gap: 6px;
+    padding: 10px 16px;
+    background: #111; border-bottom: 1px solid #333;
+    position: sticky; top: 56px; z-index: 99;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: 1px solid #444;
+    background: #222;
+    color: #ccc;
+    font-size: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .tab.active {
+    background: #fff;
+    color: #111;
+    border-color: #fff;
+    font-weight: 600;
+  }
+
+  .viewer {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .svg-container {
+    display: none;
+    width: 100%;
+    max-width: 600px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+  }
+  .svg-container.active { display: block; }
+  .svg-container object,
+  .svg-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .info-card {
+    display: none;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 16px;
+    background: #222;
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid #333;
+  }
+  .info-card.active { display: block; }
+  .info-card h3 { font-size: 15px; margin-bottom: 8px; color: #fff; }
+  .info-card .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 600;
+    margin-right: 6px;
+    margin-bottom: 4px;
+  }
+  .info-card .desc { font-size: 12px; color: #aaa; margin-top: 8px; line-height: 1.6; }
+  .info-card .size { font-size: 11px; color: #666; margin-top: 8px; }
+
+  .controls {
+    display: flex; gap: 10px; margin-top: 16px; width: 100%; max-width: 600px;
+  }
+  .controls button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #222;
+    color: #ccc;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .controls button:active { background: #333; transform: scale(0.97); }
+
+  .all-view { padding: 16px; }
+  .all-view .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .all-view .grid-item {
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.15s;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .all-view .grid-item:active { transform: scale(0.96); }
+  .all-view .grid-item img { width: 100%; height: auto; display: block; }
+  .all-view .grid-item .caption {
+    background: #222;
+    padding: 8px;
+    font-size: 11px;
+    color: #ccc;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>B0 Layout Pattern Study</h1>
+  <p>VUILD — 1030 × 1456mm Exhibition Panel Templates</p>
+</header>
+
+<div class="tab-bar" id="tabBar">
+  <div class="tab active" data-idx="all">All</div>
+  <div class="tab" data-idx="0">01 Grid</div>
+  <div class="tab" data-idx="1">02 Hero</div>
+  <div class="tab" data-idx="2">03 Timeline</div>
+  <div class="tab" data-idx="3">04 Magazine</div>
+  <div class="tab" data-idx="4">05 Minimal</div>
+  <div class="tab" data-idx="5">06 Diagram</div>
+</div>
+
+<!-- All patterns grid view -->
+<div class="all-view" id="allView">
+  <div class="grid" id="allGrid"></div>
+</div>
+
+<!-- Single pattern view -->
+<div class="viewer" id="singleView" style="display:none;">
+  <div class="svg-container active" id="svgDisplay"></div>
+  <div class="info-card active" id="infoCard"></div>
+  <div class="controls">
+    <button id="prevBtn">← Prev</button>
+    <button id="nextBtn">Next →</button>
+  </div>
+</div>
+
+<script>
+const patterns = [
+  {
+    file: 'svg-templates/01-grid-based.svg',
+    name: '01: グリッドベース',
+    tags: [{ label: '技術展示', color: '#3498DB' }, { label: '学会発表', color: '#2ECC71' }],
+    desc: '2カラムグリッドで情報を整然と配置。ヘッダー・メインビジュアル・サブ画像・データ・フッターの5層構成。'
+  },
+  {
+    file: 'svg-templates/02-hero-image.svg',
+    name: '02: ヒーローイメージ',
+    tags: [{ label: '建築展', color: '#E74C3C' }, { label: 'コンペ', color: '#9B59B6' }],
+    desc: 'パネル上部55%を大型ビジュアルに割き、下部に平面図・断面図・詳細図を3カラムで配置。'
+  },
+  {
+    file: 'svg-templates/03-timeline.svg',
+    name: '03: タイムライン',
+    tags: [{ label: 'プロセス', color: '#E67E22' }, { label: '施工記録', color: '#1ABC9C' }],
+    desc: '5フェーズの垂直タイムライン。色分けされたフェーズごとに画像+テキストエリアを配置。'
+  },
+  {
+    file: 'svg-templates/04-magazine-style.svg',
+    name: '04: マガジンスタイル',
+    tags: [{ label: '複合PJ', color: '#8E44AD' }, { label: '会社案内', color: '#2C3E50' }],
+    desc: '雑誌見開き風の2段組。画像とテキストを交互配置しリズムを生む構成。'
+  },
+  {
+    file: 'svg-templates/05-minimal.svg',
+    name: '05: ミニマル',
+    tags: [{ label: 'ブランド', color: '#34495E' }, { label: 'コンセプト', color: '#7F8C8D' }],
+    desc: '余白65%の贅沢な構成。厳選した1枚のビジュアルとタイポグラフィで世界観を表現。'
+  },
+  {
+    file: 'svg-templates/06-diagram-centric.svg',
+    name: '06: ダイアグラム中心',
+    tags: [{ label: 'CNC技術', color: '#E67E22' }, { label: 'ワークフロー', color: '#27AE60' }],
+    desc: 'フローチャート風の中央ダイアグラム（入力→処理→出力）。凡例・技術仕様・実物写真を下部に配置。'
+  }
+];
+
+let currentIdx = 0;
+
+// Build all-view grid
+const allGrid = document.getElementById('allGrid');
+patterns.forEach((p, i) => {
+  const item = document.createElement('div');
+  item.className = 'grid-item';
+  item.innerHTML = `<img src="${p.file}" alt="${p.name}"><div class="caption">${p.name}</div>`;
+  item.addEventListener('click', () => showSingle(i));
+  allGrid.appendChild(item);
+});
+
+function showSingle(idx) {
+  currentIdx = idx;
+  document.getElementById('allView').style.display = 'none';
+  document.getElementById('singleView').style.display = 'flex';
+  updateView();
+  updateTabs(idx);
+}
+
+function showAll() {
+  document.getElementById('allView').style.display = 'block';
+  document.getElementById('singleView').style.display = 'none';
+  updateTabs('all');
+}
+
+function updateView() {
+  const p = patterns[currentIdx];
+  document.getElementById('svgDisplay').innerHTML =
+    `<img src="${p.file}" alt="${p.name}">`;
+
+  const tags = p.tags.map(t =>
+    `<span class="badge" style="background:${t.color}22;color:${t.color};border:1px solid ${t.color}44">${t.label}</span>`
+  ).join('');
+
+  document.getElementById('infoCard').innerHTML = `
+    <h3>${p.name}</h3>
+    <div>${tags}</div>
+    <div class="desc">${p.desc}</div>
+    <div class="size">B0: 1030 × 1456mm / SVG editable in Illustrator</div>
+  `;
+}
+
+function updateTabs(idx) {
+  document.querySelectorAll('.tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.idx === String(idx));
+  });
+}
+
+// Tab clicks
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const idx = tab.dataset.idx;
+    if (idx === 'all') { showAll(); }
+    else { showSingle(parseInt(idx)); }
+  });
+});
+
+// Prev / Next
+document.getElementById('prevBtn').addEventListener('click', () => {
+  currentIdx = (currentIdx - 1 + patterns.length) % patterns.length;
+  updateView();
+  updateTabs(currentIdx);
+});
+document.getElementById('nextBtn').addEventListener('click', () => {
+  currentIdx = (currentIdx + 1) % patterns.length;
+  updateView();
+  updateTabs(currentIdx);
+});
+
+// Swipe support
+let touchStartX = 0;
+document.getElementById('singleView').addEventListener('touchstart', e => {
+  touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+document.getElementById('singleView').addEventListener('touchend', e => {
+  const diff = e.changedTouches[0].screenX - touchStartX;
+  if (Math.abs(diff) > 60) {
+    if (diff < 0) document.getElementById('nextBtn').click();
+    else document.getElementById('prevBtn').click();
+  }
+}, { passive: true });
+</script>
+</body>
+</html>

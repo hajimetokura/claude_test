@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1030mm" height="1456mm"
+     viewBox="0 0 1030 1456"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+
+  <title>B0 Layout Pattern 03: Timeline</title>
+
+  <defs>
+    <style>
+      .frame { fill: none; stroke: #000; stroke-width: 0.5; }
+      .area-fill { opacity: 0.08; }
+      .area-stroke { fill: none; stroke-width: 0.75; stroke-dasharray: 4,2; }
+      .label { font-family: 'Helvetica Neue', 'Noto Sans JP', sans-serif; fill: #666; }
+      .label-large { font-size: 14px; font-weight: bold; }
+      .label-small { font-size: 9px; }
+      .label-dim { font-size: 7px; fill: #999; }
+      .guide { fill: none; stroke: #00AEEF; stroke-width: 0.25; stroke-dasharray: 2,4; }
+      .margin-line { fill: none; stroke: #FF00FF; stroke-width: 0.25; stroke-dasharray: 1,3; }
+      .timeline-line { stroke: #2C3E50; stroke-width: 2; }
+      .timeline-dot { fill: #2C3E50; }
+      .phase-color-1 { fill: #E74C3C; }
+      .phase-color-2 { fill: #E67E22; }
+      .phase-color-3 { fill: #F1C40F; }
+      .phase-color-4 { fill: #27AE60; }
+      .phase-color-5 { fill: #3498DB; }
+      .img-cross { stroke-width: 0.3; opacity: 0.25; }
+    </style>
+  </defs>
+
+  <!-- ===== Layer: Background ===== -->
+  <g id="background" inkscape:groupmode="layer" inkscape:label="Background">
+    <rect x="0" y="0" width="1030" height="1456" fill="#FFFFFF" />
+    <rect x="0" y="0" width="1030" height="1456" class="frame" />
+  </g>
+
+  <!-- ===== Layer: Margins ===== -->
+  <g id="margins" inkscape:groupmode="layer" inkscape:label="Margins_Guides">
+    <rect x="40" y="40" width="950" height="1376" class="margin-line" />
+  </g>
+
+  <!-- ===== Layer: Header ===== -->
+  <g id="header" inkscape:groupmode="layer" inkscape:label="01_Header">
+    <rect x="40" y="40" width="950" height="150" fill="#2C3E50" class="area-fill" />
+    <rect x="40" y="40" width="950" height="150" stroke="#2C3E50" class="area-stroke" />
+    <text x="515" y="105" text-anchor="middle" class="label" style="font-size:28px; fill:#2C3E50; font-weight:bold;">プロジェクトタイトル</text>
+    <text x="515" y="145" text-anchor="middle" class="label" style="font-size:13px; fill:#2C3E50;">設計プロセス / 施工記録</text>
+  </g>
+
+  <!-- ===== Layer: Timeline Axis ===== -->
+  <g id="timeline-axis" inkscape:groupmode="layer" inkscape:label="02_TimelineAxis">
+    <!-- Vertical timeline line -->
+    <line x1="160" y1="230" x2="160" y2="1340" class="timeline-line" />
+    <!-- Arrow at bottom -->
+    <polygon points="155,1340 165,1340 160,1355" class="timeline-dot" />
+  </g>
+
+  <!-- ===== Layer: Phase 1 ===== -->
+  <g id="phase-1" inkscape:groupmode="layer" inkscape:label="03_Phase1_Concept">
+    <circle cx="160" cy="270" r="12" class="phase-color-1" />
+    <text x="160" y="275" text-anchor="middle" class="label" style="font-size:9px; fill:#FFF; font-weight:bold;">1</text>
+    <text x="195" y="260" class="label" style="font-size:16px; fill:#E74C3C; font-weight:bold;">Phase 1: コンセプト</text>
+    <!-- Image area -->
+    <rect x="195" y="280" width="340" height="160" fill="#E74C3C" class="area-fill" />
+    <rect x="195" y="280" width="340" height="160" stroke="#E74C3C" class="area-stroke" />
+    <line x1="195" y1="280" x2="535" y2="440" stroke="#E74C3C" class="img-cross" />
+    <line x1="535" y1="280" x2="195" y2="440" stroke="#E74C3C" class="img-cross" />
+    <text x="365" y="365" text-anchor="middle" class="label label-small" style="fill:#E74C3C;">画像 340×160mm</text>
+    <!-- Text area -->
+    <rect x="560" y="280" width="420" height="160" fill="#E74C3C" opacity="0.04" />
+    <rect x="560" y="280" width="420" height="160" stroke="#E74C3C" class="area-stroke" />
+    <text x="770" y="365" text-anchor="middle" class="label label-small" style="fill:#E74C3C;">テキストエリア</text>
+  </g>
+
+  <!-- ===== Layer: Phase 2 ===== -->
+  <g id="phase-2" inkscape:groupmode="layer" inkscape:label="04_Phase2_Design">
+    <circle cx="160" cy="490" r="12" class="phase-color-2" />
+    <text x="160" y="495" text-anchor="middle" class="label" style="font-size:9px; fill:#FFF; font-weight:bold;">2</text>
+    <text x="195" y="480" class="label" style="font-size:16px; fill:#E67E22; font-weight:bold;">Phase 2: 設計</text>
+    <rect x="195" y="500" width="340" height="160" fill="#E67E22" class="area-fill" />
+    <rect x="195" y="500" width="340" height="160" stroke="#E67E22" class="area-stroke" />
+    <line x1="195" y1="500" x2="535" y2="660" stroke="#E67E22" class="img-cross" />
+    <line x1="535" y1="500" x2="195" y2="660" stroke="#E67E22" class="img-cross" />
+    <text x="365" y="585" text-anchor="middle" class="label label-small" style="fill:#E67E22;">画像 340×160mm</text>
+    <rect x="560" y="500" width="420" height="160" fill="#E67E22" opacity="0.04" />
+    <rect x="560" y="500" width="420" height="160" stroke="#E67E22" class="area-stroke" />
+    <text x="770" y="585" text-anchor="middle" class="label label-small" style="fill:#E67E22;">テキストエリア</text>
+  </g>
+
+  <!-- ===== Layer: Phase 3 ===== -->
+  <g id="phase-3" inkscape:groupmode="layer" inkscape:label="05_Phase3_Fabrication">
+    <circle cx="160" cy="710" r="12" class="phase-color-3" />
+    <text x="160" y="715" text-anchor="middle" class="label" style="font-size:9px; fill:#FFF; font-weight:bold;">3</text>
+    <text x="195" y="700" class="label" style="font-size:16px; fill:#D4AC0D; font-weight:bold;">Phase 3: 加工</text>
+    <rect x="195" y="720" width="340" height="160" fill="#F1C40F" class="area-fill" />
+    <rect x="195" y="720" width="340" height="160" stroke="#D4AC0D" class="area-stroke" />
+    <line x1="195" y1="720" x2="535" y2="880" stroke="#D4AC0D" class="img-cross" />
+    <line x1="535" y1="720" x2="195" y2="880" stroke="#D4AC0D" class="img-cross" />
+    <text x="365" y="805" text-anchor="middle" class="label label-small" style="fill:#D4AC0D;">画像 340×160mm</text>
+    <rect x="560" y="720" width="420" height="160" fill="#F1C40F" opacity="0.04" />
+    <rect x="560" y="720" width="420" height="160" stroke="#D4AC0D" class="area-stroke" />
+    <text x="770" y="805" text-anchor="middle" class="label label-small" style="fill:#D4AC0D;">テキストエリア</text>
+  </g>
+
+  <!-- ===== Layer: Phase 4 ===== -->
+  <g id="phase-4" inkscape:groupmode="layer" inkscape:label="06_Phase4_Assembly">
+    <circle cx="160" cy="930" r="12" class="phase-color-4" />
+    <text x="160" y="935" text-anchor="middle" class="label" style="font-size:9px; fill:#FFF; font-weight:bold;">4</text>
+    <text x="195" y="920" class="label" style="font-size:16px; fill:#27AE60; font-weight:bold;">Phase 4: 組立</text>
+    <rect x="195" y="940" width="340" height="160" fill="#27AE60" class="area-fill" />
+    <rect x="195" y="940" width="340" height="160" stroke="#27AE60" class="area-stroke" />
+    <line x1="195" y1="940" x2="535" y2="1100" stroke="#27AE60" class="img-cross" />
+    <line x1="535" y1="940" x2="195" y2="1100" stroke="#27AE60" class="img-cross" />
+    <text x="365" y="1025" text-anchor="middle" class="label label-small" style="fill:#27AE60;">画像 340×160mm</text>
+    <rect x="560" y="940" width="420" height="160" fill="#27AE60" opacity="0.04" />
+    <rect x="560" y="940" width="420" height="160" stroke="#27AE60" class="area-stroke" />
+    <text x="770" y="1025" text-anchor="middle" class="label label-small" style="fill:#27AE60;">テキストエリア</text>
+  </g>
+
+  <!-- ===== Layer: Phase 5 ===== -->
+  <g id="phase-5" inkscape:groupmode="layer" inkscape:label="07_Phase5_Completion">
+    <circle cx="160" cy="1150" r="12" class="phase-color-5" />
+    <text x="160" y="1155" text-anchor="middle" class="label" style="font-size:9px; fill:#FFF; font-weight:bold;">5</text>
+    <text x="195" y="1140" class="label" style="font-size:16px; fill:#3498DB; font-weight:bold;">Phase 5: 完成</text>
+    <rect x="195" y="1160" width="785" height="160" fill="#3498DB" class="area-fill" />
+    <rect x="195" y="1160" width="785" height="160" stroke="#3498DB" class="area-stroke" />
+    <line x1="195" y1="1160" x2="980" y2="1320" stroke="#3498DB" class="img-cross" />
+    <line x1="980" y1="1160" x2="195" y2="1320" stroke="#3498DB" class="img-cross" />
+    <text x="587" y="1245" text-anchor="middle" class="label label-large" style="fill:#3498DB;">完成写真（ワイド）785 × 160mm</text>
+  </g>
+
+  <!-- ===== Layer: Footer ===== -->
+  <g id="footer" inkscape:groupmode="layer" inkscape:label="08_Footer">
+    <rect x="40" y="1356" width="950" height="60" fill="#7F8C8D" class="area-fill" />
+    <rect x="40" y="1356" width="950" height="60" stroke="#7F8C8D" class="area-stroke" />
+    <text x="80" y="1392" class="label" style="font-size:11px; fill:#7F8C8D;">Credit</text>
+    <text x="950" y="1392" text-anchor="end" class="label" style="font-size:11px; fill:#7F8C8D;">VUILD</text>
+  </g>
+
+  <!-- ===== Layer: Annotations ===== -->
+  <g id="annotations" inkscape:groupmode="layer" inkscape:label="Annotations">
+    <text x="515" y="1450" text-anchor="middle" class="label-dim" style="font-size:8px;">Pattern 03: Timeline — B0 (1030 × 1456mm)</text>
+  </g>
+
+</svg>

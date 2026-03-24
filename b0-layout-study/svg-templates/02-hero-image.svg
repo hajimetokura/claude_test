@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1030mm" height="1456mm"
+     viewBox="0 0 1030 1456"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+
+  <title>B0 Layout Pattern 02: Hero Image</title>
+
+  <defs>
+    <style>
+      .frame { fill: none; stroke: #000; stroke-width: 0.5; }
+      .area-fill { opacity: 0.08; }
+      .area-stroke { fill: none; stroke-width: 0.75; stroke-dasharray: 4,2; }
+      .label { font-family: 'Helvetica Neue', 'Noto Sans JP', sans-serif; fill: #666; }
+      .label-large { font-size: 14px; font-weight: bold; }
+      .label-small { font-size: 9px; }
+      .label-dim { font-size: 7px; fill: #999; }
+      .guide { fill: none; stroke: #00AEEF; stroke-width: 0.25; stroke-dasharray: 2,4; }
+      .margin-line { fill: none; stroke: #FF00FF; stroke-width: 0.25; stroke-dasharray: 1,3; }
+      .img-cross { stroke-width: 0.3; opacity: 0.25; }
+    </style>
+  </defs>
+
+  <!-- ===== Layer: Background ===== -->
+  <g id="background" inkscape:groupmode="layer" inkscape:label="Background">
+    <rect x="0" y="0" width="1030" height="1456" fill="#FFFFFF" />
+    <rect x="0" y="0" width="1030" height="1456" class="frame" />
+  </g>
+
+  <!-- ===== Layer: Margins & Guides ===== -->
+  <g id="margins" inkscape:groupmode="layer" inkscape:label="Margins_Guides">
+    <rect x="40" y="40" width="950" height="1376" class="margin-line" />
+    <line x1="515" y1="0" x2="515" y2="1456" class="guide" />
+  </g>
+
+  <!-- ===== Layer: Hero Image ===== -->
+  <g id="hero-image" inkscape:groupmode="layer" inkscape:label="01_HeroImage">
+    <rect x="0" y="0" width="1030" height="800" fill="#1A1A2E" class="area-fill" />
+    <rect x="0" y="0" width="1030" height="800" stroke="#1A1A2E" class="area-stroke" />
+    <!-- Cross lines -->
+    <line x1="0" y1="0" x2="1030" y2="800" stroke="#1A1A2E" class="img-cross" />
+    <line x1="1030" y1="0" x2="0" y2="800" stroke="#1A1A2E" class="img-cross" />
+    <text x="515" y="380" text-anchor="middle" class="label" style="font-size:24px; fill:#1A1A2E; font-weight:bold;">ヒーローイメージ</text>
+    <text x="515" y="415" text-anchor="middle" class="label" style="font-size:14px; fill:#1A1A2E;">パース / 写真 / CG</text>
+    <text x="515" y="445" text-anchor="middle" class="label label-small" style="fill:#1A1A2E;">1030 × 800mm（フルブリード）</text>
+  </g>
+
+  <!-- ===== Layer: Title Band ===== -->
+  <g id="title-band" inkscape:groupmode="layer" inkscape:label="02_TitleBand">
+    <rect x="40" y="820" width="950" height="120" fill="#2C3E50" class="area-fill" />
+    <rect x="40" y="820" width="950" height="120" stroke="#2C3E50" class="area-stroke" />
+    <text x="80" y="870" class="label" style="font-size:28px; fill:#2C3E50; font-weight:bold;">プロジェクト名</text>
+    <text x="80" y="910" class="label" style="font-size:13px; fill:#2C3E50;">サブタイトル / コンセプト文をここに配置</text>
+  </g>
+
+  <!-- ===== Layer: Drawings (3-column) ===== -->
+  <g id="drawings" inkscape:groupmode="layer" inkscape:label="03_Drawings">
+    <!-- Drawing 1: Plan -->
+    <rect x="40" y="960" width="290" height="320" fill="#3498DB" class="area-fill" />
+    <rect x="40" y="960" width="290" height="320" stroke="#3498DB" class="area-stroke" />
+    <line x1="40" y1="960" x2="330" y2="1280" stroke="#3498DB" class="img-cross" />
+    <line x1="330" y1="960" x2="40" y2="1280" stroke="#3498DB" class="img-cross" />
+    <text x="185" y="1120" text-anchor="middle" class="label label-large" style="fill:#3498DB;">平面図</text>
+    <text x="185" y="1145" text-anchor="middle" class="label label-small" style="fill:#3498DB;">290 × 320mm</text>
+
+    <!-- Drawing 2: Section -->
+    <rect x="370" y="960" width="290" height="320" fill="#3498DB" class="area-fill" />
+    <rect x="370" y="960" width="290" height="320" stroke="#3498DB" class="area-stroke" />
+    <line x1="370" y1="960" x2="660" y2="1280" stroke="#3498DB" class="img-cross" />
+    <line x1="660" y1="960" x2="370" y2="1280" stroke="#3498DB" class="img-cross" />
+    <text x="515" y="1120" text-anchor="middle" class="label label-large" style="fill:#3498DB;">断面図</text>
+    <text x="515" y="1145" text-anchor="middle" class="label label-small" style="fill:#3498DB;">290 × 320mm</text>
+
+    <!-- Drawing 3: Detail -->
+    <rect x="700" y="960" width="290" height="320" fill="#3498DB" class="area-fill" />
+    <rect x="700" y="960" width="290" height="320" stroke="#3498DB" class="area-stroke" />
+    <line x1="700" y1="960" x2="990" y2="1280" stroke="#3498DB" class="img-cross" />
+    <line x1="990" y1="960" x2="700" y2="1280" stroke="#3498DB" class="img-cross" />
+    <text x="845" y="1120" text-anchor="middle" class="label label-large" style="fill:#3498DB;">詳細図</text>
+    <text x="845" y="1145" text-anchor="middle" class="label label-small" style="fill:#3498DB;">290 × 320mm</text>
+  </g>
+
+  <!-- ===== Layer: Footer ===== -->
+  <g id="footer" inkscape:groupmode="layer" inkscape:label="04_Footer">
+    <rect x="40" y="1300" width="950" height="116" fill="#7F8C8D" class="area-fill" />
+    <rect x="40" y="1300" width="950" height="116" stroke="#7F8C8D" class="area-stroke" />
+    <text x="80" y="1365" class="label" style="font-size:11px; fill:#7F8C8D;">Credit / 設計: VUILD Corporation</text>
+    <!-- Logo placeholder -->
+    <rect x="880" y="1320" width="90" height="40" fill="none" stroke="#7F8C8D" stroke-width="0.5" stroke-dasharray="2,2" />
+    <text x="925" y="1345" text-anchor="middle" class="label-dim">LOGO</text>
+    <!-- QR -->
+    <rect x="880" y="1370" width="40" height="40" fill="none" stroke="#7F8C8D" stroke-width="0.5" stroke-dasharray="2,2" />
+    <text x="900" y="1394" text-anchor="middle" class="label-dim">QR</text>
+  </g>
+
+  <!-- ===== Layer: Annotations ===== -->
+  <g id="annotations" inkscape:groupmode="layer" inkscape:label="Annotations">
+    <text x="515" y="1450" text-anchor="middle" class="label-dim" style="font-size:8px;">Pattern 02: Hero Image — B0 (1030 × 1456mm)</text>
+  </g>
+
+</svg>

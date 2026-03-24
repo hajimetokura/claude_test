@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1030mm" height="1456mm"
+     viewBox="0 0 1030 1456"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+
+  <title>B0 Layout Pattern 05: Minimal</title>
+
+  <defs>
+    <style>
+      .frame { fill: none; stroke: #000; stroke-width: 0.5; }
+      .area-fill { opacity: 0.05; }
+      .area-stroke { fill: none; stroke-width: 0.5; stroke-dasharray: 6,3; }
+      .label { font-family: 'Helvetica Neue', 'Noto Sans JP', sans-serif; fill: #999; }
+      .label-large { font-size: 14px; font-weight: bold; }
+      .label-small { font-size: 9px; }
+      .label-dim { font-size: 7px; fill: #BBB; }
+      .margin-line { fill: none; stroke: #FF00FF; stroke-width: 0.25; stroke-dasharray: 1,3; }
+      .guide { fill: none; stroke: #00AEEF; stroke-width: 0.25; stroke-dasharray: 2,4; }
+      .img-cross { stroke-width: 0.2; opacity: 0.15; }
+    </style>
+  </defs>
+
+  <!-- ===== Layer: Background ===== -->
+  <g id="background" inkscape:groupmode="layer" inkscape:label="Background">
+    <rect x="0" y="0" width="1030" height="1456" fill="#FFFFFF" />
+    <rect x="0" y="0" width="1030" height="1456" class="frame" />
+  </g>
+
+  <!-- ===== Layer: Margins & Guides ===== -->
+  <g id="margins" inkscape:groupmode="layer" inkscape:label="Margins_Guides">
+    <rect x="80" y="80" width="870" height="1296" class="margin-line" />
+    <!-- Center guides -->
+    <line x1="515" y1="0" x2="515" y2="1456" class="guide" />
+    <line x1="0" y1="728" x2="1030" y2="728" class="guide" />
+    <!-- Golden ratio horizontal line -->
+    <line x1="0" y1="900" x2="1030" y2="900" class="guide" />
+  </g>
+
+  <!-- ===== Layer: Whitespace Upper ===== -->
+  <g id="whitespace-upper" inkscape:groupmode="layer" inkscape:label="01_Whitespace_Upper">
+    <!-- This layer is intentionally sparse - the whitespace IS the design -->
+    <text x="515" y="250" text-anchor="middle" class="label-dim" style="font-size:10px; font-style:italic;">（余白エリア — 意図的な空白）</text>
+  </g>
+
+  <!-- ===== Layer: Central Visual ===== -->
+  <g id="central-visual" inkscape:groupmode="layer" inkscape:label="02_CentralVisual">
+    <rect x="165" y="400" width="700" height="460" fill="#333" class="area-fill" />
+    <rect x="165" y="400" width="700" height="460" stroke="#999" class="area-stroke" />
+    <line x1="165" y1="400" x2="865" y2="860" stroke="#999" class="img-cross" />
+    <line x1="865" y1="400" x2="165" y2="860" stroke="#999" class="img-cross" />
+    <text x="515" y="620" text-anchor="middle" class="label" style="font-size:18px; fill:#999;">厳選された1枚のビジュアル</text>
+    <text x="515" y="650" text-anchor="middle" class="label label-small">700 × 460mm</text>
+  </g>
+
+  <!-- ===== Layer: Typography Block ===== -->
+  <g id="typography" inkscape:groupmode="layer" inkscape:label="03_Typography">
+    <!-- Project name - large typography -->
+    <text x="515" y="960" text-anchor="middle" class="label" style="font-size:36px; fill:#222; font-weight:300; letter-spacing:8px;">プロジェクト名</text>
+    <!-- Concept line -->
+    <text x="515" y="1010" text-anchor="middle" class="label" style="font-size:13px; fill:#888; letter-spacing:3px;">一文のコンセプトステートメント</text>
+    <!-- Thin separator -->
+    <line x1="440" y1="1040" x2="590" y2="1040" stroke="#CCC" stroke-width="0.5" />
+  </g>
+
+  <!-- ===== Layer: Whitespace Lower ===== -->
+  <g id="whitespace-lower" inkscape:groupmode="layer" inkscape:label="04_Whitespace_Lower">
+    <text x="515" y="1200" text-anchor="middle" class="label-dim" style="font-size:10px; font-style:italic;">（余白エリア — 意図的な空白）</text>
+  </g>
+
+  <!-- ===== Layer: Minimal Footer ===== -->
+  <g id="footer" inkscape:groupmode="layer" inkscape:label="05_Footer">
+    <!-- Logo placeholder -->
+    <rect x="470" y="1350" width="90" height="30" fill="none" stroke="#CCC" stroke-width="0.3" stroke-dasharray="2,2" />
+    <text x="515" y="1370" text-anchor="middle" class="label-dim" style="font-size:8px;">VUILD</text>
+    <!-- Year -->
+    <text x="515" y="1400" text-anchor="middle" class="label" style="font-size:9px; fill:#BBB; letter-spacing:4px;">2026</text>
+  </g>
+
+  <!-- ===== Layer: Annotations ===== -->
+  <g id="annotations" inkscape:groupmode="layer" inkscape:label="Annotations">
+    <!-- Whitespace ratio indicator -->
+    <text x="25" y="630" class="label-dim" style="font-size:7px;" transform="rotate(-90,25,630)">Content ~35%</text>
+    <text x="15" y="300" class="label-dim" style="font-size:7px;" transform="rotate(-90,15,300)">Whitespace ~65%</text>
+    <text x="515" y="1450" text-anchor="middle" class="label-dim" style="font-size:8px;">Pattern 05: Minimal — B0 (1030 × 1456mm)</text>
+  </g>
+
+</svg>
