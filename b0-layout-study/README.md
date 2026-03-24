@@ -25,14 +25,31 @@ VUILD の展示・プレゼンテーション用 B0パネル（1030mm × 1456mm�
 ```
 b0-layout-study/
 ├── README.md                 ← このファイル
-├── patterns/
+├── patterns/                 ← パターン解説（Markdown）
 │   ├── 01-grid-based.md
 │   ├── 02-hero-image.md
 │   ├── 03-timeline.md
 │   ├── 04-magazine-style.md
 │   ├── 05-minimal.md
 │   └── 06-diagram-centric.md
+├── svg-templates/            ← Illustrator編集用テンプレート（SVG）
+│   ├── 01-grid-based.svg
+│   ├── 02-hero-image.svg
+│   ├── 03-timeline.svg
+│   ├── 04-magazine-style.svg
+│   ├── 05-minimal.svg
+│   └── 06-diagram-centric.svg
 └── guidelines/
     ├── typography.md
     └── composition-rules.md
 ```
+
+## SVGテンプレートについて
+
+`svg-templates/` 内のSVGファイルはAdobe Illustratorで直接開いて編集できます。
+
+- **実寸サイズ**: B0（1030mm × 1456mm）で作成
+- **レイヤー構成**: 各要素がレイヤー分け済み（Illustratorのレイヤーパネルで確認可能）
+- **編集方法**: Illustratorで開く → レイヤーを選択 → 画像やテキストを差し替え
+- **ガイド**: マージン線（マゼンタ）・センターガイド（シアン）付き
+- **画像エリア**: ×印の矩形が画像配置エリア（サイズ表示付き）
