@@ -275,7 +275,105 @@ actions.forEach(([tag, t], i) => {
 });
 footer(s, 10);
 
+// =========================================================
+// 11. セクション扉：What we do（キャッチコピー）
+// =========================================================
+s = newSlide();
+rect(s, 0, 0, 0.22, SH, { fill: ACCENT });
+T(s, "WHAT WE DO", { x: MX + 0.15, y: 1.95, w: 10, h: 0.5, fontSize: 15, color: ACCENT, bold: true });
+T(s, "すべての人に、自由なものづくりを", { x: MX + 0.15, y: 2.55, w: 11.4, h: 1.2, fontSize: 40, bold: true, lineSpacingMultiple: 1.1 });
+rect(s, MX + 0.17, 3.95, 2.0, 0.05, { fill: LINE });
+T(s, "道具・場・知識。その3つが揃ったとき、はじめて自由なものづくりが生まれる。\nVUILDはその環境ごと、設計する。",
+  { x: MX + 0.15, y: 4.2, w: 10.6, h: 1.5, fontSize: 18, color: MUTED, lineSpacingMultiple: 1.4 });
+footer(s, 11);
+
+// =========================================================
+// 12. Feature：3つの環境（Tool / Place / Knowledge）
+// =========================================================
+s = newSlide();
+header(s, "What we do ｜ Feature", "VUILDがつくる、3つの環境", 28);
+const pillars = [
+  ["01. Tool", "アイデアを、形にする道具", "デザインから加工まで、ものづくりのプロセスをつなぐツール群を開発・提供。設計製作を補助するEMARF、木材加工を可能にするShopBot、言葉やスケッチからデザインを始められるAI Modeling Tools。3つが組み合わさることで、アイデアは形になる。"],
+  ["02. Place", "つくる人が、集まる場所", "全国に広がるShopBotオーナーの拠点は、単なる加工施設ではない。クリエイターが集い、技術を共有し、ものづくりの文化を育てる場になっている。VUILDはそのネットワークを活性化し、全国的なものづくりの動きへとつなげていく。"],
+  ["03. Knowledge", "つくり方を、受け継いでいく", "機械の使い方だけでなく、デザインの思想ごと伝える。ShopBot導入後の伴走支援から、学校法人向けプログラム、地域に入り込んだ人材育成まで。ものづくりの担い手を、地域の中から増やしていく。"],
+];
+const pcy = 2.25, pch = 4.2, pcw = (SW - 2 * MX - 2 * 0.4) / 3;
+pillars.forEach(([label, title, desc], i) => {
+  const cx = MX + i * (pcw + 0.4);
+  rect(s, cx, pcy, pcw, pch, { fill: i % 2 === 1 ? ACC_BG : WHITE, line: LINE, lineW: 1 });
+  rect(s, cx, pcy, pcw, 0.09, { fill: ACCENT });
+  T(s, label, { x: cx + 0.3, y: pcy + 0.32, w: pcw - 0.6, h: 0.4, fontSize: 15, bold: true, color: ACCENT });
+  T(s, title, { x: cx + 0.3, y: pcy + 0.82, w: pcw - 0.6, h: 0.85, fontSize: 18, bold: true, color: INK, lineSpacingMultiple: 1.15 });
+  T(s, desc, { x: cx + 0.3, y: pcy + 1.75, w: pcw - 0.6, h: 2.3, fontSize: 11.5, color: MUTED, lineSpacingMultiple: 1.32, align: "left" });
+});
+footer(s, 12);
+
+// =========================================================
+// 13. Solution：提供するソリューション
+// =========================================================
+s = newSlide();
+header(s, "What we do ｜ Solution", "提供するソリューション", 30);
+const sols = [
+  ["ShopBot®", [{ text: "木材を自在に加工できるCNCルーター。全国280拠点に広がるオーナーネットワークが、ものづくりの現場を支えている。", options: { fontSize: 12.5, color: MUTED, lineSpacingMultiple: 1.32 } }], "→ ShopBot", false],
+  ["教育プログラム", [{ text: "デザインからものづくりまでの智を獲得する教育プログラムの提供。", options: { fontSize: 12.5, color: MUTED, lineSpacingMultiple: 1.32 } }], "→ CMSで記事をつくる", false],
+  ["ものづくり支援アプリ", [
+    { text: "デザインから加工データまでを一つの流れでつなぐ、設計製作補助ツール。データベース・CAD・CAMの3つにアクセスできる。", options: { fontSize: 12.5, color: FAINT, strike: true, lineSpacingMultiple: 1.32, breakLine: true, paraSpaceAfter: 6 } },
+    { text: "※ 説明文は再検討中", options: { fontSize: 11, color: ACCENT, bold: true } },
+  ], "→ EMARF / NESTING", true],
+];
+const scy = 2.5, sch = 3.5, scw = (SW - 2 * MX - 2 * 0.4) / 3;
+sols.forEach(([name, descRuns, link], i) => {
+  const cx = MX + i * (scw + 0.4);
+  rect(s, cx, scy, scw, sch, { fill: WHITE, line: LINE, lineW: 1 });
+  rect(s, cx, scy, 0.08, sch, { fill: ACCENT });
+  T(s, name, { x: cx + 0.32, y: scy + 0.3, w: scw - 0.6, h: 0.5, fontSize: 18, bold: true, color: INK });
+  T(s, descRuns, { x: cx + 0.32, y: scy + 0.95, w: scw - 0.62, h: 1.9, valign: "top" });
+  rect(s, cx + 0.32, scy + sch - 0.62, scw - 0.62, 0.012, { fill: LINE });
+  T(s, link, { x: cx + 0.32, y: scy + sch - 0.5, w: scw - 0.6, h: 0.35, fontSize: 12, bold: true, color: ACCENT });
+});
+T(s, "関連リンク：CMS上で各ソリューションの記事へ接続する想定",
+  { x: MX, y: scy + sch + 0.25, w: SW - 2 * MX, h: 0.35, fontSize: 11, color: FAINT });
+footer(s, 13);
+
+// =========================================================
+// 14. Project：関連プロジェクト
+// =========================================================
+s = newSlide();
+header(s, "What we do ｜ Project", "関連プロジェクト（CMS掲載予定）", 26);
+T(s, "想定タグ：教育／アプリ開発／林業／地域／共創／ShopBot導入支援／拠点開拓／カルチャー協業？　※全体で使うタグと合わせて調整",
+  { x: MX, y: 1.95, w: SW - 2 * MX, h: 0.5, fontSize: 11, color: MUTED, lineSpacingMultiple: 1.25 });
+const pjHead = ["PJ", "プロジェクト", "メモ／ステータス"].map((h) => ({
+  text: h, options: { fill: { color: INK }, color: WHITE, bold: true, fontSize: 12, valign: "middle" },
+}));
+const pjRows = [
+  ["PJ1", "倉吉探求学習プログラム", ""],
+  ["PJ2", "名古屋キャリア教育授業　2022–2025", ""],
+  ["PJ3", "EMARF for Owners", ""],
+  ["PJ4", "ヴィルダーズサクセスプラン（VSP）", "活用オーナーの声を集める（コンセントファニチャー・三祐木材 等）"],
+  ["PJ5", "Co-BUILD", "要議論"],
+  ["PJ6", "既存EMARF（プレカットサービス）", "「EMARFとは」の再定義が必要"],
+  ["PJ7", "Morimobi 岡崎", ""],
+  ["PJ8", "久米製材", "候補（検討中）"],
+  ["PJ9", "松川", "候補（検討中）"],
+];
+const pjBody = pjRows.map((r, j) => r.map((c, ci) => ({
+  text: c,
+  options: {
+    fill: { color: j % 2 === 0 ? WHITE : ACC_BG },
+    color: ci === 0 ? ACCENT : (ci === 2 && c ? ACCENT : INK),
+    bold: ci === 0 || (ci === 1),
+    fontSize: ci === 2 ? 11 : 12, valign: "middle",
+  },
+})));
+s.addTable([pjHead, ...pjBody], {
+  x: MX, y: 2.7, w: SW - 2 * MX, colW: [1.0, 5.0, 5.493],
+  rowH: [0.42, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4],
+  border: { type: "solid", color: LINE, pt: 0.5 },
+  fontFace: FONT, margin: [3, 8, 3, 8],
+});
+footer(s, 14);
+
 const out = "/home/user/claude_test/incubation-okr-q3-q4.pptx";
 pptx.writeFile({ fileName: out }).then((f) => {
-  console.log("saved:", f, "slides: 10");
+  console.log("saved:", f, "slides: 14");
 });
